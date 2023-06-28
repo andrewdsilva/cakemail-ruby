@@ -1,0 +1,42 @@
+Layout/FirstHashElementIndentation:
+  Enabled: false
+Layout/ArgumentAlignment:
+  Enabled: false
+Layout/HashAlignment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/OptionalBooleanParameter:
+  Enabled: false
+Style/MethodDefParentheses:
+  Enabled: true
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/RescueStandardError:
+  EnforcedStyle: implicit
+Naming/VariableNumber:
+  CheckSymbols: false
+Style/VariableNumber:
+  Enabled: false
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+Style/WordArray:
+  Enabled: false
+Style/SymbolArray:
+  Enabled: false
+Lint/Debugger:
+  Enabled: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+Layout/ArrayAlignment:
+  EnforcedStyle: with_fixed_indentation
+Style/ClassVars:
+  Enabled: false
+Metrics/BlockLength:
+  Max: 2000
