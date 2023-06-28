@@ -33,3 +33,12 @@ And then execute:
 ```
 bundle install
 ```
+
+### API key
+
+You need to set your Cakemail API credentials using environment variables.
+
+```ruby
+# .env
+CAKEMAIL_API_KEY="..."
+```
