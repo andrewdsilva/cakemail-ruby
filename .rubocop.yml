@@ -40,3 +40,5 @@ Style/ClassVars:
   Enabled: false
 Metrics/BlockLength:
   Max: 2000
+Metrics/MethodLength:
+  Max: 25
