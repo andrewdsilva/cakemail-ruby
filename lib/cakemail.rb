@@ -14,4 +14,5 @@ module Cakemail
   end
 
   autoload :Base, "cakemail/base"
+  autoload :Token, "cakemail/token"
 end

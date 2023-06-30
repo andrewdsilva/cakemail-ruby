@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.cakemail.dev/token
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      User-Agent:
+      - Faraday v2.7.7
+      Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 30 Jun 2023 05:51:29 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1704'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin
+      X-Krakend:
+      - Version 1.1.1
+      X-Krakend-Completed:
+      - 'false'
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"<TOKEN_PLACEHOLDER>","token_type":"bearer","expires_in":1296000,"refresh_token":"<TOKEN_PLACEHOLDER>"}'
+  recorded_at: Fri, 30 Jun 2023 05:51:29 GMT
+recorded_with: VCR 6.2.0

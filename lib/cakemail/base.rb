@@ -10,13 +10,12 @@ module Cakemail
     #           list = Cakemail::Base.find(1, 'list')
     #           list.class #=> Cakemail::User
     #           list.id    #=> 1
-    def self.find(_ids, type)
-      type_class = Cakemail.const_get(type.capitalize)
-      path = "#{type_class.path}/#{id}"
+    def self.find(id)
+      path = "#{object_class.path}/#{id}"
 
       response = Cakemail.get path
 
-      type_class.new response unless response.nil?
+      instantiate_object response unless response.nil?
     end
 
     # Returns Cakemail objects
@@ -36,6 +35,23 @@ module Cakemail
       response = Cakemail.get path
 
       type_class.new response unless response.nil?
+    end
+
+    def initialize(options = {})
+    end
+
+    def self.object_class; end
+
+    def self.instantiate_object(json)
+      object_class.new json
+    end
+
+    def respond_to?(method_name)
+      attr = "@#{method_name}"
+
+      return super if method_name.match(/[\?!]$/) || !instance_variable_defined?(attr)
+
+      true
     end
   end
 end

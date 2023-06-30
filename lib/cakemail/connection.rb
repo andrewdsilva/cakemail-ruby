@@ -21,23 +21,7 @@ module Cakemail
       Cakemail.config.api_key
     end
 
-    def create_token(username = nil, password = nil)
-      post("token", authentication_params(username, password))
-    end
-
     private
-
-    def authentication_params(username, password)
-      username = ENV["CAKEMAIL_USERNAME"] if username.nil?
-      password = ENV["CAKEMAIL_PASSWORD"] if password.nil?
-
-      {
-        grant_type: "password",
-        scopes: "user",
-        username: username,
-        password: password
-      }
-    end
 
     def missing_authentication?(_response)
       false
@@ -50,22 +34,14 @@ module Cakemail
       headers
     end
 
-    def send_request(verb, path, params)
-      connection = Faraday.new(
-        url: API_URI,
-        headers: auth_header,
-      )
-
-      response = connection.send(verb.downcase.to_sym, path) do |req|
-        req.body = JSON.generate(params)
-      end
-
-      pp response
+    def send_request(http_verb, path, params)
+      connection = Faraday.new(url: API_URI)
+      response = connection.send(http_verb.downcase.to_sym, path, params, auth_header)
 
       raise MissingAuthentication if missing_authentication? response
 
       begin
-        JSON.parse(response.body)
+        JSON.parse(response.body).merge("status_code" => response.status)
       rescue
         raise JsonResponseError
       end
