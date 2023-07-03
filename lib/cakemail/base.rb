@@ -37,8 +37,7 @@ module Cakemail
       type_class.new response unless response.nil?
     end
 
-    def initialize(options = {})
-    end
+    def initialize(options = {}); end
 
     def self.object_class; end
 
@@ -49,7 +48,7 @@ module Cakemail
     def respond_to?(method_name)
       attr = "@#{method_name}"
 
-      return super if method_name.match(/[\?!]$/) || !instance_variable_defined?(attr)
+      return super if method_name.match(/[?!]$/) || !instance_variable_defined?(attr)
 
       true
     end

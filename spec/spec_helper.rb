@@ -15,7 +15,7 @@ VCR.configure do |config|
     body.gsub!(/"username":\s*"[^"]+"/, '"username": "<FILTERED>"')
     body.gsub!(/"password":\s*"[^"]+"/, '"password": "<FILTERED>"')
 
-    if response.body.include?('access_token')
+    if response.body.include?("access_token")
       new_body = response.body.gsub(/"access_token":"[^"]+"/, '"access_token":"<TOKEN_PLACEHOLDER>"')
       new_body = new_body.gsub(/"refresh_token":"[^"]+"/, '"refresh_token":"<TOKEN_PLACEHOLDER>"')
 
