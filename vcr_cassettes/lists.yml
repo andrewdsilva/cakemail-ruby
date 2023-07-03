@@ -1,18 +1,18 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://api.cakemail.dev/token
+    method: get
+    uri: https://api.cakemail.dev/lists?page=1&per_page=50
     body:
-      encoding: UTF-8
-      string: "<FILTERED>"
+      encoding: US-ASCII
+      string: ''
     headers:
       User-Agent:
       - Faraday v2.7.7
       Accept:
       - application/json
-      Content-Type:
-      - application/x-www-form-urlencoded
+      Authorization:
+      - Bearer <TOKEN_PLACEHOLDER>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -23,11 +23,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Sun, 02 Jul 2023 17:10:33 GMT
+      - Sun, 02 Jul 2023 20:03:11 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '1704'
+      - '245'
       Connection:
       - keep-alive
       Vary:
@@ -38,6 +38,8 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"access_token":"<TOKEN_PLACEHOLDER>","token_type":"bearer","expires_in":1296000,"refresh_token":"<TOKEN_PLACEHOLDER>"}'
-  recorded_at: Mon, 03 Jul 2023 17:10:14 GMT
+      string: '{"pagination":{"count":null,"page":1,"per_page":50},"data":[{"id":8944823,"name":"Liste
+        de Nathan Lopez","status":"active","language":"fr_CA","created_on":1688012089,"default_sender":{"name":"Nathan
+        Lopez","email":"nathan.lopez042@gmail.com"}}]}'
+  recorded_at: Mon, 03 Jul 2023 20:02:52 GMT
 recorded_with: VCR 6.2.0

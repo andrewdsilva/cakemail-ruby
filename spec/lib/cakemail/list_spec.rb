@@ -1,0 +1,55 @@
+RSpec.describe Cakemail::List do
+  describe "Cakemail::List.list" do
+    before(:each) do
+      # Get all lists
+      @lists = VCR.use_cassette("lists") do
+        Cakemail::List.list
+      end
+    end
+
+    it "Should find all lists with correct attributes" do
+      expect(@lists.first.id).to be_an Integer
+      expect(@lists.first.name).to be_an String
+      expect(@lists.first.status).to be_an String
+      expect(@lists.first.language).to be_an String
+      expect(@lists.first.created_on).to be_an Integer
+    end
+
+    it "Should find a list by id with correct attributes" do
+      # Get one list
+      @list = VCR.use_cassette("list") do
+        Cakemail::List.find(@lists.first.id)
+      end
+
+      expect(@list.id).to be_an Integer
+      expect(@list.name).to be_an String
+      expect(@list.status).to be_an String
+      expect(@list.language).to be_an String
+      expect(@list.created_on).to be_an Integer
+    end
+
+    it "Should count the total number of lists" do
+      @count = VCR.use_cassette("lists.count") do
+        Cakemail::List.count
+      end
+
+      expect(@count).to eq(@lists.length)
+    end
+
+    it "Should find all objects in batch" do
+      @count = VCR.use_cassette("lists.count") do
+        Cakemail::List.count
+      end
+
+      all_objects = 0
+
+      VCR.use_cassette("lists.find_in_batches") do
+        Cakemail::List.find_in_batches do
+          all_objects += 1
+        end
+      end
+
+      expect(@count).to eq(all_objects)
+    end
+  end
+end

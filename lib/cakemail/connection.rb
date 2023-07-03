@@ -12,7 +12,7 @@ module Cakemail
     attr_accessor :raw_response
 
     VERBS.each do |verb|
-      define_method verb do |path, params|
+      define_method verb do |path, params = {}|
         send_request(verb, path, params)
       end
     end
@@ -23,13 +23,19 @@ module Cakemail
 
     private
 
-    def missing_authentication?(_response)
-      false
+    def parse_json(json)
+      JSON.parse(json)
+    rescue
+      raise JsonResponseError
+    end
+
+    def missing_authentication?(response)
+      parse_json(response.body)&.dig("detail") == "Not authenticated"
     end
 
     def auth_header
-      headers = { "accept" => "application/json", "content-Type" => "application/x-www-form-urlencoded" }
-      headers < { "Authorization" => "Bearer #{api_key}" } if api_key
+      headers = { "accept" => "application/json" }
+      headers = headers.merge("authorization" => "Bearer #{api_key}") if api_key
 
       headers
     end
@@ -40,11 +46,7 @@ module Cakemail
 
       raise MissingAuthentication if missing_authentication? response
 
-      begin
-        JSON.parse(response.body).merge("status_code" => response.status)
-      rescue
-        raise JsonResponseError
-      end
+      parse_json(response.body).merge("status_code" => response.status)
     end
   end
 end

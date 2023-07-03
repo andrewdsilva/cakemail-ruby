@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cakemail.dev/lists/8944823
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.7
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer <TOKEN_PLACEHOLDER>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 02 Jul 2023 20:05:48 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '580'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin
+      X-Krakend:
+      - Version 1.1.1
+      X-Krakend-Completed:
+      - 'false'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":8944823,"name":"Liste de Nathan Lopez","status":"active","policy_accepted":true,"language":"fr_CA","created_on":1688012089,"default_sender":{"name":"Nathan
+        Lopez","email":"nathan.lopez042@gmail.com"},"redirections":{"after_opt_in":null,"after_double_opt_in":null,"after_opt_out":null},"pages":{"opt_in":"https://cmtd1.com/oi/443/8ee2785836727f587728c0716769c5b4","opt_out":"https://cmtd1.com/oo/443/8ee2785836727f587728c0716769c5b4","subscribe":"https://cmtd1.com/s/443/8ee2785836727f587728c0716769c5b4","unsubscribe":null},"webhook":{"url":null,"actions":["all"]}}}'
+  recorded_at: Mon, 03 Jul 2023 20:05:30 GMT
+recorded_with: VCR 6.2.0

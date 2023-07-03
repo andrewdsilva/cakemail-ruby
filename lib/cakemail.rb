@@ -15,4 +15,5 @@ module Cakemail
 
   autoload :Base, "cakemail/base"
   autoload :Token, "cakemail/token"
+  autoload :List, "cakemail/list"
 end
