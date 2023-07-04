@@ -1,5 +1,5 @@
 RSpec.describe Cakemail::List do
-  describe "Cakemail::List.list" do
+  describe "Cakemail::List" do
     before(:each) do
       # Get all lists
       @lists = VCR.use_cassette("lists") do
@@ -50,6 +50,16 @@ RSpec.describe Cakemail::List do
       end
 
       expect(@count).to eq(all_objects)
+    end
+
+    it "Should create a new list" do
+      @list = VCR.use_cassette("list.create") do
+        params = { name: "My list", language: "fr_CA", default_sender: { id: "SpBIA10pyLsnIOnCb6Ih" } }
+
+        Cakemail::List.create params
+      end
+
+      expect(@list).to be_an Cakemail::List
     end
   end
 end

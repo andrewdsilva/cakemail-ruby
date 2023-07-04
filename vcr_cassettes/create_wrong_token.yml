@@ -12,7 +12,9 @@ http_interactions:
       Accept:
       - application/json
       Content-Type:
-      - application/x-www-form-urlencoded
+      - application/json
+      Authorization:
+      - Bearer <TOKEN_PLACEHOLDER>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -23,11 +25,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 30 Jun 2023 05:51:30 GMT
+      - Tue, 04 Jul 2023 05:08:42 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '110'
+      - '92'
       Connection:
       - keep-alive
       Vary:
@@ -38,7 +40,6 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"detail":[{"loc":["body","username"],"msg":"value is not a valid email
-        address","type":"value_error.email"}]}'
-  recorded_at: Fri, 30 Jun 2023 05:51:30 GMT
+      string: '{"detail":[{"loc":["body","username"],"msg":"field required","type":"value_error.missing"}]}'
+  recorded_at: Tue, 04 Jul 2023 05:08:42 GMT
 recorded_with: VCR 6.2.0

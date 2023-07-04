@@ -6,7 +6,6 @@ module Cakemail
     # Returns Cakemail object with id and type provided
     #
     # @param id [String]
-    # @param type [String]
     # @return [List, Contact, Campaign, Tags]
     #
     # @example
@@ -23,7 +22,6 @@ module Cakemail
 
     # Returns Cakemail objects
     #
-    # @param type [String]
     # @param page [Integer]
     # @param per_page [Integer]
     # @return [Array<List>, Array<Contact>, Array<Campaign>, Array<Tags>]
@@ -54,7 +52,7 @@ module Cakemail
 
     # Yields each batch of records that was found
     #
-    # @param type [Block]
+    # @param block [Block]
     #
     # @example
     #           total_contacts = Cakemail::Contact.count
@@ -72,6 +70,27 @@ module Cakemail
 
         page += 1
       end
+    end
+
+    # Create a new object and return it
+    #
+    # @param params [Hash]
+    # @return [List, Contact, Campaign, Tags]
+    #
+    # @example
+    #           my_list = Cakemail::List.create(name: "My list")
+    def self.create(params)
+      path = object_class.path
+
+      response = Cakemail.post path, params.to_json
+
+      return response unless response_ok? response
+
+      instantiate_object(response["data"]) unless response.nil?
+    end
+
+    def self.response_ok?(response)
+      [200, 201].include?(response["status_code"])
     end
 
     def initialize(options = {})

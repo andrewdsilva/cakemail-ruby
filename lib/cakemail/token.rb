@@ -15,13 +15,19 @@ module Cakemail
     # @example
     #           token = Cakemail::Token.create('toto', 'password123')
     def self.create(username = nil, password = nil)
-      response = Cakemail.post("token", authentication_params(username, password))
+      path = object_class.path
 
-      if response["status_code"] == 200
+      response = Cakemail.post path, authentication_params(username, password), { "content-type": "application/x-www-form-urlencoded" }
+
+      if response_ok? response
         instantiate_object response
       else
         response
       end
+    end
+
+    def self.path
+      "token"
     end
 
     def self.object_class

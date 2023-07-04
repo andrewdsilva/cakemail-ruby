@@ -12,8 +12,8 @@ module Cakemail
     attr_accessor :raw_response
 
     VERBS.each do |verb|
-      define_method verb do |path, params = {}|
-        send_request(verb, path, params)
+      define_method verb do |path, params = {}, headers = {}|
+        send_request(verb, path, params, headers)
       end
     end
 
@@ -34,15 +34,15 @@ module Cakemail
     end
 
     def auth_header
-      headers = { "accept" => "application/json" }
+      headers = { "accept" => "application/json", "Content-Type" => "application/json" }
       headers = headers.merge("authorization" => "Bearer #{api_key}") if api_key
 
       headers
     end
 
-    def send_request(http_verb, path, params)
+    def send_request(http_verb, path, params, headers)
       connection = Faraday.new(url: API_URI)
-      response = connection.send(http_verb.downcase.to_sym, path, params, auth_header)
+      response = connection.send(http_verb.downcase.to_sym, path, params, auth_header.merge(headers))
 
       raise MissingAuthentication if missing_authentication? response
 
