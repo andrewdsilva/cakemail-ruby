@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 04 Jul 2023 05:06:17 GMT
+      - Tue, 04 Jul 2023 05:59:09 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -40,8 +40,8 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"pagination":{"count":3,"page":1,"per_page":1},"data":[{"id":8944823,"name":"Liste
+      string: '{"pagination":{"count":4,"page":1,"per_page":1},"data":[{"id":8944823,"name":"Liste
         de Nathan Lopez","status":"active","language":"fr_CA","created_on":1688012089,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}}]}'
-  recorded_at: Tue, 04 Jul 2023 05:06:17 GMT
+  recorded_at: Tue, 04 Jul 2023 05:59:09 GMT
 recorded_with: VCR 6.2.0

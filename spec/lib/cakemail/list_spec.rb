@@ -53,8 +53,13 @@ RSpec.describe Cakemail::List do
     end
 
     it "Should create a new list" do
+      # Get sender
+      @sender = VCR.use_cassette("list.sender") do
+        Cakemail::Sender.list.first
+      end
+
       @list = VCR.use_cassette("list.create") do
-        params = { name: "My list", language: "fr_CA", default_sender: { id: "SpBIA10pyLsnIOnCb6Ih" } }
+        params = { name: "My list", language: "fr_CA", default_sender: { id: @sender.id } }
 
         Cakemail::List.create params
       end

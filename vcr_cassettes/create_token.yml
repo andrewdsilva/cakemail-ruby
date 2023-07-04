@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 04 Jul 2023 05:15:16 GMT
+      - Tue, 04 Jul 2023 05:59:11 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -41,5 +41,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"access_token":"<TOKEN_PLACEHOLDER>","token_type":"bearer","expires_in":1296000,"refresh_token":"<TOKEN_PLACEHOLDER>"}'
-  recorded_at: Tue, 04 Jul 2023 05:15:16 GMT
+  recorded_at: Tue, 04 Jul 2023 05:59:11 GMT
 recorded_with: VCR 6.2.0

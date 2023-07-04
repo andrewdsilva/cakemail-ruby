@@ -1,35 +1,35 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://api.cakemail.dev/token
+    method: get
+    uri: https://api.cakemail.dev/brands/default/senders?page=1&per_page=50
     body:
-      encoding: UTF-8
-      string: "<FILTERED>"
+      encoding: US-ASCII
+      string: ''
     headers:
       User-Agent:
       - Faraday v2.7.7
       Accept:
       - application/json
       Content-Type:
-      - application/x-www-form-urlencoded
+      - application/json
       Authorization:
       - Bearer <TOKEN_PLACEHOLDER>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
-      code: 422
-      message: Unprocessable Entity
+      code: 200
+      message: OK
     headers:
       Server:
       - nginx
       Date:
-      - Tue, 04 Jul 2023 05:59:12 GMT
+      - Tue, 04 Jul 2023 06:00:14 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '110'
+      - '244'
       Connection:
       - keep-alive
       Vary:
@@ -40,7 +40,7 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"detail":[{"loc":["body","username"],"msg":"value is not a valid email
-        address","type":"value_error.email"}]}'
-  recorded_at: Tue, 04 Jul 2023 05:59:11 GMT
+      string: '{"pagination":{"count":null,"page":1,"per_page":50},"data":[{"id":"SpBIA10pyLsnIOnCb6Ih","name":"Nathan
+        Lopez","email":"nathan.lopez042@gmail.com","confirmed":true,"confirmed_on":1688011243,"language":"en_US","last_confirmation_sent_on":null}]}'
+  recorded_at: Tue, 04 Jul 2023 06:00:13 GMT
 recorded_with: VCR 6.2.0

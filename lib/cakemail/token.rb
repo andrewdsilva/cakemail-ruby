@@ -17,7 +17,8 @@ module Cakemail
     def self.create(username = nil, password = nil)
       path = object_class.path
 
-      response = Cakemail.post path, authentication_params(username, password), { "content-type": "application/x-www-form-urlencoded" }
+      response = Cakemail.post path, authentication_params(username, password),
+{ "content-type": "application/x-www-form-urlencoded" }
 
       if response_ok? response
         instantiate_object response

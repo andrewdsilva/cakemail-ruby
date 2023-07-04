@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 04 Jul 2023 05:06:18 GMT
+      - Tue, 04 Jul 2023 05:59:10 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -40,10 +40,10 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"pagination":{"count":3,"page":1,"per_page":1},"data":[{"id":8944823,"name":"Liste
+      string: '{"pagination":{"count":4,"page":1,"per_page":1},"data":[{"id":8944823,"name":"Liste
         de Nathan Lopez","status":"active","language":"fr_CA","created_on":1688012089,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}}]}'
-  recorded_at: Tue, 04 Jul 2023 05:06:18 GMT
+  recorded_at: Tue, 04 Jul 2023 05:59:10 GMT
 - request:
     method: get
     uri: https://api.cakemail.dev/lists?page=1&per_page=50
@@ -69,11 +69,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 04 Jul 2023 05:06:18 GMT
+      - Tue, 04 Jul 2023 05:59:11 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '582'
+      - '752'
       Connection:
       - keep-alive
       Vary:
@@ -88,6 +88,7 @@ http_interactions:
         de Nathan Lopez","status":"active","language":"fr_CA","created_on":1688012089,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8947181,"name":"Test","status":"active","language":"fr_FR","created_on":1688445887,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8947182,"name":"My list","status":"active","language":"fr_CA","created_on":1688446626,"default_sender":{"name":"Nathan
+        Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8947185,"name":"My list","status":"active","language":"fr_CA","created_on":1688447179,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}}]}'
-  recorded_at: Tue, 04 Jul 2023 05:06:18 GMT
+  recorded_at: Tue, 04 Jul 2023 05:59:10 GMT
 recorded_with: VCR 6.2.0
