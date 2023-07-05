@@ -104,6 +104,23 @@ module Cakemail
       self.class.response_ok?(response) && response["deleted"]
     end
 
+    # Update Cakemail object and return it
+    #
+    # @return [List, Contact, Campaign, Tags]
+    #
+    # @example
+    #           list = Cakemail::List.find(1)
+    #           list.update(name: "My list 2")
+    def update(params)
+      path = "#{self.class.object_class.path}/#{id}"
+
+      response = Cakemail.patch path, params.to_json
+
+      return response unless self.class.response_ok?(response) && response["updated"]
+
+      self.class.instantiate_object(response["data"]) unless response.nil?
+    end
+
     def self.response_ok?(response)
       [200, 201].include?(response["status_code"])
     end

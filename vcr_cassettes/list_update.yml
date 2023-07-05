@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://api.cakemail.dev/lists/8947185
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      User-Agent:
+      - Faraday v2.7.7
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <TOKEN_PLACEHOLDER>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 05 Jul 2023 04:34:09 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '596'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin
+      X-Krakend:
+      - Version 1.1.1
+      X-Krakend-Completed:
+      - 'false'
+    body:
+      encoding: UTF-8
+      string: '{"id":8947185,"updated":true,"data":{"id":8947185,"name":"New name","status":"active","policy_accepted":false,"language":"fr_CA","created_on":1688447179,"default_sender":{"name":"Nathan
+        Lopez","email":"nathan.lopez042@gmail.com"},"redirections":{"after_opt_in":null,"after_double_opt_in":null,"after_opt_out":null},"pages":{"opt_in":"https://cmtd1.com/oi/443/8ee2785836727f58f43912a782b2fec5","opt_out":"https://cmtd1.com/oo/443/8ee2785836727f58f43912a782b2fec5","subscribe":"https://cmtd1.com/s/443/8ee2785836727f58f43912a782b2fec5","unsubscribe":null},"webhook":{"url":null,"actions":["all"]}}}'
+  recorded_at: Wed, 05 Jul 2023 04:34:09 GMT
+recorded_with: VCR 6.2.0

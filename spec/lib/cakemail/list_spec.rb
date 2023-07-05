@@ -67,6 +67,21 @@ RSpec.describe Cakemail::List do
       expect(list).to be_an Cakemail::List
     end
 
+    it "Should update a list" do
+      # Get the last list
+      list = VCR.use_cassette("lists.for_update") do
+        Cakemail::List.list
+      end
+
+      # Delete the last list
+      list_updated = VCR.use_cassette("list.update") do
+        list.last.update(name: "New name")
+      end
+
+      expect(list_updated).to be_an Cakemail::List
+      expect(list_updated.name).to eq("New name")
+    end
+
     it "Should delete a list" do
       # Get the last list
       list = VCR.use_cassette("lists.for_deletation") do

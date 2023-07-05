@@ -6,7 +6,7 @@ module Cakemail
   class JsonResponseError < StandardError; end
 
   API_URI = "https://api.cakemail.dev".freeze
-  VERBS   = %w[get post put delete].freeze
+  VERBS   = %w[get post patch delete].freeze
 
   class << self
     attr_accessor :raw_response
