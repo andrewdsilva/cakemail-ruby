@@ -97,7 +97,7 @@ puts "Updated List Name: #{list.name}"
 4. Deleting a list:
 ```ruby
 list = Cakemail::List.find(list_id)
-list.destroy
+list.delete
 puts "List deleted successfully."
 ```
 
