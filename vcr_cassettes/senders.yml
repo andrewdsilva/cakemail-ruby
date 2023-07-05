@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 04 Jul 2023 06:01:56 GMT
+      - Wed, 05 Jul 2023 05:03:11 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -42,5 +42,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"pagination":{"count":null,"page":1,"per_page":50},"data":[{"id":"SpBIA10pyLsnIOnCb6Ih","name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com","confirmed":true,"confirmed_on":1688011243,"language":"en_US","last_confirmation_sent_on":null}]}'
-  recorded_at: Tue, 04 Jul 2023 06:01:55 GMT
+  recorded_at: Wed, 05 Jul 2023 05:03:11 GMT
 recorded_with: VCR 6.2.0

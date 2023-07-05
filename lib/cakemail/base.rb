@@ -28,8 +28,14 @@ module Cakemail
     #
     # @example
     #           contacts = Cakemail::Contact.list(1, 50)
-    def self.list(page = 1, per_page = 50)
+    def self.list(page = 1, per_page = 50, options = {})
       path = "#{object_class.path}?page=#{page}&per_page=#{per_page}"
+
+      unless options.keys.empty?
+        query = options.map { |key, value| "filter=#{key}==#{value}" }.join("&")
+
+        path += "&#{query}"
+      end
 
       response = Cakemail.get path
 
@@ -119,6 +125,40 @@ module Cakemail
       return response unless self.class.response_ok?(response) && response["updated"]
 
       self.class.instantiate_object(response["data"]) unless response.nil?
+    end
+
+    # Archive Cakemail object and return it
+    #
+    # @return [List, Contact, Campaign, Tags]
+    #
+    # @example
+    #           list = Cakemail::List.find(1)
+    #           list.archive
+    def archive
+      path = "#{self.class.object_class.path}/#{id}/archive"
+
+      response = Cakemail.post path, {}.to_json
+
+      return response unless self.class.response_ok?(response) && response["archived"]
+
+      self.class.instantiate_object(response) unless response.nil?
+    end
+
+    # Unarchive Cakemail object and return it
+    #
+    # @return [List, Contact, Campaign, Tags]
+    #
+    # @example
+    #           list = Cakemail::List.find(1)
+    #           list.unarchive
+    def unarchive
+      path = "#{self.class.object_class.path}/#{id}/unarchive"
+
+      response = Cakemail.post path, {}.to_json
+
+      return response unless self.class.response_ok?(response) && !response["archive"]
+
+      self.class.instantiate_object(response) unless response.nil?
     end
 
     def self.response_ok?(response)

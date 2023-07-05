@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cakemail.dev/brands/default/senders?page=1&per_page=50
+    uri: https://api.cakemail.dev/lists?filter=status==archived&page=1&per_page=10
     body:
       encoding: US-ASCII
       string: ''
@@ -25,11 +25,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 05 Jul 2023 05:03:04 GMT
+      - Wed, 05 Jul 2023 05:03:09 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '244'
+      - '407'
       Connection:
       - keep-alive
       Vary:
@@ -40,7 +40,9 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"pagination":{"count":null,"page":1,"per_page":50},"data":[{"id":"SpBIA10pyLsnIOnCb6Ih","name":"Nathan
-        Lopez","email":"nathan.lopez042@gmail.com","confirmed":true,"confirmed_on":1688011243,"language":"en_US","last_confirmation_sent_on":null}]}'
-  recorded_at: Wed, 05 Jul 2023 05:03:04 GMT
+      string: '{"pagination":{"count":null,"page":1,"per_page":10},"data":[{"id":8947860,"name":"New
+        name","status":"archived","language":"fr_CA","created_on":1688533282,"default_sender":{"name":"Nathan
+        Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8947861,"name":"New name","status":"archived","language":"fr_CA","created_on":1688533385,"default_sender":{"name":"Nathan
+        Lopez","email":"nathan.lopez042@gmail.com"}}]}'
+  recorded_at: Wed, 05 Jul 2023 05:03:09 GMT
 recorded_with: VCR 6.2.0

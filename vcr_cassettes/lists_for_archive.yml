@@ -2,50 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cakemail.dev/lists?page=1&per_page=1&with_count=true
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v2.7.7
-      Accept:
-      - application/json
-      Content-Type:
-      - application/json
-      Authorization:
-      - Bearer <TOKEN_PLACEHOLDER>
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Wed, 05 Jul 2023 05:03:03 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '241'
-      Connection:
-      - keep-alive
-      Vary:
-      - Origin
-      X-Krakend:
-      - Version 1.1.1
-      X-Krakend-Completed:
-      - 'false'
-    body:
-      encoding: UTF-8
-      string: '{"pagination":{"count":3,"page":1,"per_page":1},"data":[{"id":8944823,"name":"Liste
-        de Nathan Lopez","status":"active","language":"fr_CA","created_on":1688012089,"default_sender":{"name":"Nathan
-        Lopez","email":"nathan.lopez042@gmail.com"}}]}'
-  recorded_at: Wed, 05 Jul 2023 05:03:03 GMT
-- request:
-    method: get
     uri: https://api.cakemail.dev/lists?page=1&per_page=50
     body:
       encoding: US-ASCII
@@ -69,11 +25,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 05 Jul 2023 05:03:03 GMT
+      - Wed, 05 Jul 2023 05:03:07 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '583'
+      - '754'
       Connection:
       - keep-alive
       Vary:
@@ -88,6 +44,7 @@ http_interactions:
         de Nathan Lopez","status":"active","language":"fr_CA","created_on":1688012089,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8947181,"name":"Test","status":"active","language":"fr_FR","created_on":1688445887,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8947185,"name":"New name","status":"active","language":"fr_CA","created_on":1688447179,"default_sender":{"name":"Nathan
+        Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8947861,"name":"New name","status":"active","language":"fr_CA","created_on":1688533385,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}}]}'
-  recorded_at: Wed, 05 Jul 2023 05:03:03 GMT
+  recorded_at: Wed, 05 Jul 2023 05:03:07 GMT
 recorded_with: VCR 6.2.0

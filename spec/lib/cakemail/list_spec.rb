@@ -82,6 +82,36 @@ RSpec.describe Cakemail::List do
       expect(list_updated.name).to eq("New name")
     end
 
+    it "Should archive a list" do
+      # Get the last list
+      list = VCR.use_cassette("lists.for_archive") do
+        Cakemail::List.list
+      end
+
+      # Delete the last list
+      list_archived = VCR.use_cassette("list.archive") do
+        list.last.archive
+      end
+
+      expect(list_archived).to be_an Cakemail::List
+      expect(list_archived.id).to eq(list.last.id)
+    end
+
+    it "Should unarchive a list" do
+      # Get the last list
+      list = VCR.use_cassette("lists.for_unarchive") do
+        Cakemail::List.list 1, 10, "status": "archived"
+      end
+
+      # Delete the last list
+      list_unarchived = VCR.use_cassette("list.unarchive") do
+        list.last.unarchive
+      end
+
+      expect(list_unarchived).to be_an Cakemail::List
+      expect(list_unarchived.id).to eq(list.last.id)
+    end
+
     it "Should delete a list" do
       # Get the last list
       list = VCR.use_cassette("lists.for_deletation") do
