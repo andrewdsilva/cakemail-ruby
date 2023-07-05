@@ -17,27 +17,27 @@ RSpec.describe Cakemail::List do
 
     it "Should find a list by id with correct attributes" do
       # Get one list
-      @list = VCR.use_cassette("list") do
+      list = VCR.use_cassette("list") do
         Cakemail::List.find(@lists.first.id)
       end
 
-      expect(@list.id).to be_an Integer
-      expect(@list.name).to be_an String
-      expect(@list.status).to be_an String
-      expect(@list.language).to be_an String
-      expect(@list.created_on).to be_an Integer
+      expect(list.id).to be_an Integer
+      expect(list.name).to be_an String
+      expect(list.status).to be_an String
+      expect(list.language).to be_an String
+      expect(list.created_on).to be_an Integer
     end
 
     it "Should count the total number of lists" do
-      @count = VCR.use_cassette("lists.count") do
+      count = VCR.use_cassette("lists.count") do
         Cakemail::List.count
       end
 
-      expect(@count).to eq(@lists.length)
+      expect(count).to eq(@lists.length)
     end
 
     it "Should find all objects in batch" do
-      @count = VCR.use_cassette("lists.count") do
+      count = VCR.use_cassette("lists.count") do
         Cakemail::List.count
       end
 
@@ -49,22 +49,36 @@ RSpec.describe Cakemail::List do
         end
       end
 
-      expect(@count).to eq(all_objects)
+      expect(count).to eq(all_objects)
     end
 
     it "Should create a new list" do
       # Get sender
-      @sender = VCR.use_cassette("list.sender") do
+      sender = VCR.use_cassette("list.sender") do
         Cakemail::Sender.list.first
       end
 
-      @list = VCR.use_cassette("list.create") do
-        params = { name: "My list", language: "fr_CA", default_sender: { id: @sender.id } }
+      list = VCR.use_cassette("list.create") do
+        params = { name: "My list", language: "fr_CA", default_sender: { id: sender.id } }
 
         Cakemail::List.create params
       end
 
-      expect(@list).to be_an Cakemail::List
+      expect(list).to be_an Cakemail::List
+    end
+
+    it "Should delete a list" do
+      # Get the last list
+      list = VCR.use_cassette("lists.for_deletation") do
+        Cakemail::List.list
+      end
+
+      # Delete the last list
+      deletation = VCR.use_cassette("list.delete") do
+        list.last.delete
+      end
+
+      expect(deletation).to eq(true)
     end
   end
 end

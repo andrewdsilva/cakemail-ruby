@@ -89,6 +89,21 @@ module Cakemail
       instantiate_object(response["data"]) unless response.nil?
     end
 
+    # Delete Cakemail object
+    #
+    # @return Boolean
+    #
+    # @example
+    #           list = Cakemail::List.find(1)
+    #           list.delete
+    def delete
+      path = "#{self.class.object_class.path}/#{id}"
+
+      response = Cakemail.delete path
+
+      self.class.response_ok?(response) && response["deleted"]
+    end
+
     def self.response_ok?(response)
       [200, 201].include?(response["status_code"])
     end
