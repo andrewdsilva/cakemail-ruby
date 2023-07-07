@@ -26,5 +26,14 @@ RSpec.describe Cakemail::Contact do
 
       expect(contact).to be_an Cakemail::Contact
     end
+
+    it "Should get list of contacts from list object" do
+      contacts = VCR.use_cassette("list.contacts") do
+        @list.contacts
+      end
+
+      expect(contacts.last).to be_an Cakemail::Contact
+      expect(contacts.last.email).to eq("nathan.lopez042@gmail.com")
+    end
   end
 end

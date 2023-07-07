@@ -13,7 +13,7 @@ module Cakemail
 
     def self.no_parent_exception
       raise Cakemail::Base::NoParentError,
-"To request contacts, a list is required. Please use the parent option to pass it."
+        "To request contacts, a list is required. Please use the parent option to pass it."
     end
 
     def self.object_class

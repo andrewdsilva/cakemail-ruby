@@ -3,7 +3,7 @@ module Cakemail
   # @attr [String]         status      Ex. "active"
   # @attr [String]         language    Ex. "fr_CA"
   # @attr [Integer]        created_on  Timestamp Ex.1688012089
-  # @attr [Array<Contact>] artists     The contacts of the list
+  # @attr [Array<Contact>] contacts    The contacts of the list
   class List < Base
     attr_accessor :name, :status, :language, :created_on
 
@@ -13,6 +13,10 @@ module Cakemail
 
     def self.path
       "lists"
+    end
+
+    def contacts(options = {})
+      Cakemail::Contact.list(options.merge(parent: self))
     end
 
     def initialize(options = {})

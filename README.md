@@ -121,3 +121,46 @@ Cakemail::List.find_in_batches do |list|
   puts list
 end
 ```
+
+## Contacts
+
+Here are some common use cases for managing contacts:
+
+1. Retrieve all contacts in a list
+
+To retrieve all contacts in a given list, you can use the `list` method of the `Cakemail::Contact` class. Make sure to specify the parent list when calling the method:
+
+```ruby
+# Get lists
+lists = Cakemail::List.all
+
+# Retrieve all contacts in a list
+contacts = Cakemail::Contact.list(parent: lists.first)
+
+contacts.each do |contact|
+  puts "Email: #{contact.email}"
+  puts "Status: #{contact.status}"
+  puts "Subscription Date: #{Time.at(contact.subscribed_on)}"
+  puts "---"
+end
+
+# Or directly from a list object
+lists.first.contacts
+```
+
+2. Create a new contact
+
+To create a new contact in a specific list, use the `create` method of the `Cakemail::Contact` class. Provide the necessary information, such as the email address, as a parameter hash:
+
+```ruby
+# Create a new contact
+params = {
+  email: "nathan.lopez042@gmail.com"
+}
+
+new_contact = Cakemail::Contact.create(params, parent: list)
+
+puts "Contact created successfully."
+puts "Email: #{new_contact.email}"
+puts "Status: #{new_contact.status}"
+```
