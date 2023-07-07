@@ -39,7 +39,7 @@ module Cakemail
       no_parent_exception if parent_required && parent.nil?
 
       path = "#{object_class.path}?page=#{page}&per_page=#{per_page}"
-      path = "#{parent.class.path}/#{parent.id}/#{path}" if parent
+      path = path_with_parent(path, parent) if parent
 
       unless filters.keys.empty?
         query = filters.map { |key, value| "filter=#{key}==#{value}" }.join("&")
@@ -101,7 +101,7 @@ module Cakemail
       no_parent_exception if parent_required && parent.nil?
 
       path = object_class.path
-      path = "#{parent.class.path}/#{parent.id}/#{path}" if parent
+      path = path_with_parent(path, parent) if parent
 
       response = Cakemail.post path, params.to_json
 
@@ -182,6 +182,10 @@ module Cakemail
 
     def self.parent_required
       false
+    end
+
+    def self.path_with_parent(path, parent)
+      "#{parent.class.path}/#{parent.id}/#{path}"
     end
 
     def self.response_ok?(response)
