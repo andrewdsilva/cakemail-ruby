@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.cakemail.dev/lists/8947861/archive
+    uri: https://api.cakemail.dev/lists/8949749/archive
     body:
       encoding: UTF-8
       string: "<FILTERED>"
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 05 Jul 2023 05:03:08 GMT
+      - Fri, 07 Jul 2023 04:55:33 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -40,6 +40,6 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"id":8947861,"object":"list","archived":true}'
-  recorded_at: Wed, 05 Jul 2023 05:03:08 GMT
+      string: '{"id":8949749,"object":"list","archived":true}'
+  recorded_at: Fri, 07 Jul 2023 04:55:33 GMT
 recorded_with: VCR 6.2.0

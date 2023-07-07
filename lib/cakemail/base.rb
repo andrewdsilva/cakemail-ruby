@@ -1,7 +1,9 @@
 module Cakemail
   # @attr [Integer]       id         Id of the list
   class Base
-    attr_accessor :id
+    class NoParentError < StandardError; end
+
+    attr_accessor :id, :parent
 
     # Returns Cakemail object with id and type provided
     #
@@ -28,18 +30,26 @@ module Cakemail
     #
     # @example
     #           contacts = Cakemail::Contact.list(1, 50)
-    def self.list(page = 1, per_page = 50, options = {})
-      path = "#{object_class.path}?page=#{page}&per_page=#{per_page}"
+    def self.list(options = {})
+      page     = options[:page]     || 1
+      per_page = options[:per_page] || 50
+      filters  = options[:filters]  || {}
+      parent   = options[:parent]   || nil
 
-      unless options.keys.empty?
-        query = options.map { |key, value| "filter=#{key}==#{value}" }.join("&")
+      no_parent_exception if parent_required && parent.nil?
+
+      path = "#{object_class.path}?page=#{page}&per_page=#{per_page}"
+      path = "#{parent.class.path}/#{parent.id}/#{path}" if parent
+
+      unless filters.keys.empty?
+        query = filters.map { |key, value| "filter=#{key}==#{value}" }.join("&")
 
         path += "&#{query}"
       end
 
       response = Cakemail.get path
 
-      instantiate_object_list(response["data"]) unless response.nil?
+      instantiate_object_list(response["data"], parent) unless response.nil?
     end
 
     # Returns total count
@@ -68,7 +78,7 @@ module Cakemail
       per_page = 50
 
       loop do
-        list(page, per_page).each do |object|
+        list(page: page, per_page: per_page).each do |object|
           block.call(object)
         end
 
@@ -85,8 +95,13 @@ module Cakemail
     #
     # @example
     #           my_list = Cakemail::List.create(name: "My list")
-    def self.create(params)
+    def self.create(params, options = {})
+      parent = options[:parent] || nil
+
+      no_parent_exception if parent_required && parent.nil?
+
       path = object_class.path
+      path = "#{parent.class.path}/#{parent.id}/#{path}" if parent
 
       response = Cakemail.post path, params.to_json
 
@@ -161,6 +176,14 @@ module Cakemail
       self.class.instantiate_object(response) unless response.nil?
     end
 
+    def self.no_parent_exception
+      raise NoParentError
+    end
+
+    def self.parent_required
+      false
+    end
+
     def self.response_ok?(response)
       [200, 201].include?(response["status_code"])
     end
@@ -171,12 +194,16 @@ module Cakemail
 
     def self.object_class; end
 
-    def self.instantiate_object_list(json)
-      json.map { |json_object| instantiate_object(json_object) }
+    def self.instantiate_object_list(json, parent = nil)
+      json.map { |json_object| instantiate_object(json_object, parent) }
     end
 
-    def self.instantiate_object(json)
-      object_class.new json
+    def self.instantiate_object(json, parent = nil)
+      object = object_class.new json
+
+      object.parent = parent unless parent.nil?
+
+      object
     end
 
     def respond_to?(method_name)

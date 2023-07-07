@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.cakemail.dev/lists/8947861
+    uri: https://api.cakemail.dev/lists/8949749
     body:
       encoding: US-ASCII
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 05 Jul 2023 05:03:10 GMT
+      - Fri, 07 Jul 2023 04:55:35 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -40,6 +40,6 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"id":8947861,"object":"list","deleted":true}'
-  recorded_at: Wed, 05 Jul 2023 05:03:10 GMT
+      string: '{"id":8949749,"object":"list","deleted":true}'
+  recorded_at: Fri, 07 Jul 2023 04:55:35 GMT
 recorded_with: VCR 6.2.0

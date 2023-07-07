@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.cakemail.dev/token
+    uri: https://api.cakemail.dev/lists/8944823/contacts
     body:
       encoding: UTF-8
       string: "<FILTERED>"
@@ -12,24 +12,24 @@ http_interactions:
       Accept:
       - application/json
       Content-Type:
-      - application/x-www-form-urlencoded
+      - application/json
       Authorization:
       - Bearer <TOKEN_PLACEHOLDER>
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
-      code: 200
-      message: OK
+      code: 201
+      message: Created
     headers:
       Server:
       - nginx
       Date:
-      - Fri, 07 Jul 2023 04:55:36 GMT
+      - Fri, 07 Jul 2023 04:55:24 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '1704'
+      - '231'
       Connection:
       - keep-alive
       Vary:
@@ -40,6 +40,6 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"access_token":"<TOKEN_PLACEHOLDER>","token_type":"bearer","expires_in":1296000,"refresh_token":"<TOKEN_PLACEHOLDER>"}'
-  recorded_at: Fri, 07 Jul 2023 04:55:36 GMT
+      string: '{"id":1,"object":"contact","created":true,"data":{"id":1,"email":"nathan.lopez042@gmail.com","status":"active","subscribed_on":1688703281,"last_bounce_type":"none","bounces_count":0,"custom_attributes":[],"tags":[],"interests":[]}}'
+  recorded_at: Fri, 07 Jul 2023 04:55:24 GMT
 recorded_with: VCR 6.2.0

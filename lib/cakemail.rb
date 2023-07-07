@@ -17,4 +17,5 @@ module Cakemail
   autoload :Token, "cakemail/token"
   autoload :Sender, "cakemail/sender"
   autoload :List, "cakemail/list"
+  autoload :Contact, "cakemail/contact"
 end

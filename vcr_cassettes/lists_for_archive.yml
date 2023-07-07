@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 05 Jul 2023 05:03:07 GMT
+      - Fri, 07 Jul 2023 04:55:32 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -44,7 +44,7 @@ http_interactions:
         de Nathan Lopez","status":"active","language":"fr_CA","created_on":1688012089,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8947181,"name":"Test","status":"active","language":"fr_FR","created_on":1688445887,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8947185,"name":"New name","status":"active","language":"fr_CA","created_on":1688447179,"default_sender":{"name":"Nathan
-        Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8947861,"name":"New name","status":"active","language":"fr_CA","created_on":1688533385,"default_sender":{"name":"Nathan
+        Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8949749,"name":"New name","status":"active","language":"fr_CA","created_on":1688705729,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}}]}'
-  recorded_at: Wed, 05 Jul 2023 05:03:07 GMT
+  recorded_at: Fri, 07 Jul 2023 04:55:32 GMT
 recorded_with: VCR 6.2.0

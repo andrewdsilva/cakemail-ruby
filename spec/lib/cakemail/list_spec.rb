@@ -100,7 +100,7 @@ RSpec.describe Cakemail::List do
     it "Should unarchive a list" do
       # Get the last list
       list = VCR.use_cassette("lists.for_unarchive") do
-        Cakemail::List.list 1, 10, "status": "archived"
+        Cakemail::List.list filters: { "status": "archived" }
       end
 
       # Delete the last list
