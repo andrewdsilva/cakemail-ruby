@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.cakemail.dev/lists
+    uri: https://api.cakemail.dev/lists/8944823/contacts
     body:
       encoding: UTF-8
       string: "<FILTERED>"
@@ -25,11 +25,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Sat, 08 Jul 2023 04:58:32 GMT
+      - Sat, 08 Jul 2023 05:01:11 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '595'
+      - '231'
       Connection:
       - keep-alive
       Vary:
@@ -40,7 +40,6 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"id":8950265,"created":true,"data":{"id":8950265,"name":"My list","status":"active","policy_accepted":false,"language":"fr_CA","created_on":1688792311,"default_sender":{"name":"Nathan
-        Lopez","email":"nathan.lopez042@gmail.com"},"redirections":{"after_opt_in":null,"after_double_opt_in":null,"after_opt_out":null},"pages":{"opt_in":"https://cmtd1.com/oi/443/8ee2785836727f588cc72fecda18c5e2","opt_out":"https://cmtd1.com/oo/443/8ee2785836727f588cc72fecda18c5e2","subscribe":"https://cmtd1.com/s/443/8ee2785836727f588cc72fecda18c5e2","unsubscribe":null},"webhook":{"url":null,"actions":["all"]}}}'
-  recorded_at: Sat, 08 Jul 2023 04:58:32 GMT
+      string: '{"id":4,"object":"contact","created":true,"data":{"id":4,"email":"nathan.lopez042@gmail.com","status":"active","subscribed_on":1688792470,"last_bounce_type":"none","bounces_count":0,"custom_attributes":[],"tags":[],"interests":[]}}'
+  recorded_at: Sat, 08 Jul 2023 05:01:11 GMT
 recorded_with: VCR 6.2.0

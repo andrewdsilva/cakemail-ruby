@@ -25,11 +25,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 07 Jul 2023 04:55:24 GMT
+      - Sat, 08 Jul 2023 05:01:10 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '282'
+      - '101'
       Connection:
       - keep-alive
       Vary:
@@ -40,6 +40,6 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"pagination":{"count":null,"page":1,"per_page":50,"cursor":{"previous":null,"next":null}},"data":[{"id":1,"email":"nathan.lopez042@gmail.com","status":"active","subscribed_on":1688703281,"last_bounce_type":"none","bounces_count":0,"custom_attributes":[],"tags":[],"interests":[]}]}'
-  recorded_at: Fri, 07 Jul 2023 04:55:24 GMT
+      string: '{"pagination":{"count":null,"page":1,"per_page":50,"cursor":{"previous":null,"next":null}},"data":[]}'
+  recorded_at: Sat, 08 Jul 2023 05:01:10 GMT
 recorded_with: VCR 6.2.0

@@ -7,6 +7,26 @@ module Cakemail
   class Contact < Base
     attr_accessor :email, :status, :subscribed_on, :bounces_count
 
+    # Unsubscribe contact
+    #
+    # @return Contact
+    #
+    # @example
+    #           contact = Cakemail::Contact.find(1, parent: list)
+    #           contact.unsubscribe
+    def unsubscribe(options = {})
+      parent = get_parent(options)
+
+      path = "#{self.class.object_class.path}/#{id}/unsubscribe"
+      path = self.class.path_with_parent(path, parent) if parent
+
+      response = Cakemail.post path, {}.to_json
+
+      return response unless self.class.response_ok?(response)
+
+      self.class.instantiate_object(response["data"]) unless response.nil?
+    end
+
     def self.parent_required
       true
     end

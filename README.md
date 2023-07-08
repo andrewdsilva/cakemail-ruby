@@ -163,4 +163,36 @@ new_contact = Cakemail::Contact.create(params, parent: list)
 puts "Contact created successfully."
 puts "Email: #{new_contact.email}"
 puts "Status: #{new_contact.status}"
+
+# Or create from list
+
+new_contact = list.create_contact(params)
+puts "Contact created successfully."
+```
+
+3. Updating an existing contact:
+```ruby
+list = Cakemail::List.find(list_id)
+contact = list.contacts.last
+
+contact.update(email: "new_mail@gmail.com")
+puts "Updated contact email: #{contact.email}"
+```
+
+4. Deleting a contact:
+```ruby
+list = Cakemail::List.find(list_id)
+contact = list.contacts.last
+
+contact.delete
+puts "Contact deleted successfully."
+```
+
+5. Unsubscribe a contact:
+```ruby
+list = Cakemail::List.find(list_id)
+contact = list.contacts.last
+
+contact.unsubscribe
+puts "Contact unsubscribed successfully."
 ```

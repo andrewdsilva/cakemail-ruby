@@ -14,8 +14,11 @@ module Cakemail
     #           list = Cakemail::List.find(1)
     #           list.class #=> Cakemail::User
     #           list.id    #=> 1
-    def self.find(id)
+    def self.find(id, options = {})
+      parent = get_parent(options)
+
       path = "#{object_class.path}/#{id}"
+      path = path_with_parent(path, parent) if parent
 
       response = Cakemail.get path
 
@@ -58,8 +61,11 @@ module Cakemail
     #
     # @example
     #           total_contacts = Cakemail::Contact.count
-    def self.count
+    def self.count(options = {})
+      parent = get_parent(options)
+
       path = "#{object_class.path}?page=1&per_page=1&with_count=true"
+      path = path_with_parent(path, parent) if parent
 
       response = Cakemail.get path
 
@@ -72,13 +78,14 @@ module Cakemail
     #
     # @example
     #           total_contacts = Cakemail::Contact.count
-    def self.find_in_batches(&block)
-      total = count
+    def self.find_in_batches(options = {}, &block)
+      total = count(options)
+
+      per_page = options[:per_page] || 50
       page = 1
-      per_page = 50
 
       loop do
-        list(page: page, per_page: per_page).each do |object|
+        list(options.merge(page: page, per_page: per_page)).each do |object|
           block.call(object)
         end
 
@@ -96,7 +103,7 @@ module Cakemail
     # @example
     #           my_list = Cakemail::List.create(name: "My list")
     def self.create(params, options = {})
-      parent = options[:parent] || nil
+      parent = get_parent(options)
 
       no_parent_exception if parent_required && parent.nil?
 
@@ -117,8 +124,11 @@ module Cakemail
     # @example
     #           list = Cakemail::List.find(1)
     #           list.delete
-    def delete
+    def delete(options = {})
+      parent = get_parent(options)
+
       path = "#{self.class.object_class.path}/#{id}"
+      path = self.class.path_with_parent(path, parent) if parent
 
       response = Cakemail.delete path
 
@@ -132,8 +142,11 @@ module Cakemail
     # @example
     #           list = Cakemail::List.find(1)
     #           list.update(name: "My list 2")
-    def update(params)
+    def update(params, options = {})
+      parent = get_parent(options)
+
       path = "#{self.class.object_class.path}/#{id}"
+      path = self.class.path_with_parent(path, parent) if parent
 
       response = Cakemail.patch path, params.to_json
 
@@ -149,8 +162,11 @@ module Cakemail
     # @example
     #           list = Cakemail::List.find(1)
     #           list.archive
-    def archive
+    def archive(options = {})
+      parent = get_parent(options)
+
       path = "#{self.class.object_class.path}/#{id}/archive"
+      path = self.class.path_with_parent(path, parent) if parent
 
       response = Cakemail.post path, {}.to_json
 
@@ -166,14 +182,25 @@ module Cakemail
     # @example
     #           list = Cakemail::List.find(1)
     #           list.unarchive
-    def unarchive
+    def unarchive(options = {})
+      parent = get_parent(options)
+
       path = "#{self.class.object_class.path}/#{id}/unarchive"
+      path = self.class.path_with_parent(path, parent) if parent
 
       response = Cakemail.post path, {}.to_json
 
       return response unless self.class.response_ok?(response) && !response["archive"]
 
       self.class.instantiate_object(response) unless response.nil?
+    end
+
+    def self.get_parent(options = {})
+      options[:parent] || nil
+    end
+
+    def get_parent(options = {})
+      @parent || self.class.get_parent(options)
     end
 
     def self.no_parent_exception

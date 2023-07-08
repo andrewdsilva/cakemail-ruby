@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 07 Jul 2023 04:55:33 GMT
+      - Sat, 08 Jul 2023 04:58:34 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -42,7 +42,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"pagination":{"count":null,"page":1,"per_page":50},"data":[{"id":8947860,"name":"New
         name","status":"archived","language":"fr_CA","created_on":1688533282,"default_sender":{"name":"Nathan
-        Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8949749,"name":"New name","status":"archived","language":"fr_CA","created_on":1688705729,"default_sender":{"name":"Nathan
+        Lopez","email":"nathan.lopez042@gmail.com"}},{"id":8950265,"name":"New name","status":"archived","language":"fr_CA","created_on":1688792311,"default_sender":{"name":"Nathan
         Lopez","email":"nathan.lopez042@gmail.com"}}]}'
-  recorded_at: Fri, 07 Jul 2023 04:55:33 GMT
+  recorded_at: Sat, 08 Jul 2023 04:58:34 GMT
 recorded_with: VCR 6.2.0

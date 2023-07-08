@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.cakemail.dev/lists?page=1&per_page=1&with_count=true
+    method: patch
+    uri: https://api.cakemail.dev/lists/8944823/contacts/4
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: "<FILTERED>"
     headers:
       User-Agent:
       - Faraday v2.7.7
@@ -25,11 +25,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Sat, 08 Jul 2023 04:58:28 GMT
+      - Sat, 08 Jul 2023 05:01:12 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '241'
+      - '226'
       Connection:
       - keep-alive
       Vary:
@@ -40,8 +40,6 @@ http_interactions:
       - 'false'
     body:
       encoding: UTF-8
-      string: '{"pagination":{"count":3,"page":1,"per_page":1},"data":[{"id":8944823,"name":"Liste
-        de Nathan Lopez","status":"active","language":"fr_CA","created_on":1688012089,"default_sender":{"name":"Nathan
-        Lopez","email":"nathan.lopez042@gmail.com"}}]}'
-  recorded_at: Sat, 08 Jul 2023 04:58:28 GMT
+      string: '{"id":4,"object":"contact","updated":true,"data":{"id":4,"email":"1688792472@gmail.com","status":"active","subscribed_on":1688792470,"last_bounce_type":"none","bounces_count":0,"custom_attributes":[],"tags":[],"interests":[]}}'
+  recorded_at: Sat, 08 Jul 2023 05:01:12 GMT
 recorded_with: VCR 6.2.0

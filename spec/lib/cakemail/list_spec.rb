@@ -73,7 +73,7 @@ RSpec.describe Cakemail::List do
         Cakemail::List.list
       end
 
-      # Delete the last list
+      # Update the last list
       list_updated = VCR.use_cassette("list.update") do
         list.last.update(name: "New name")
       end
