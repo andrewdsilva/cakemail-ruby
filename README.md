@@ -16,10 +16,6 @@ This gem is designed to be community-driven, with the aim of prioritizing the ne
 
 If you need help using Cakemail, please check the Cakemail Support Help Center at https://www.cakemail.com/contact-us.
 
-## Status 🚧
-
-This gem is under construction. Stay tuned for exciting updates as I continue to shape it.
-
 ## Installation
 
 To install the gem add it into a Gemfile (Bundler):

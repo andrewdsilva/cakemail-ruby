@@ -3,7 +3,7 @@
 require_relative "lib/cakemail/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "cakemail"
+  spec.name = "cakemail-next-gen"
   spec.version = Cakemail::VERSION
   spec.authors = ["Nathan Lopez"]
   spec.email = ["nathan.lopez042@gmail.com"]
