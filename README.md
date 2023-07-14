@@ -68,7 +68,7 @@ Here are some basic usage examples for managing lists:
 
 1. Fetching all lists:
 ```ruby
-lists = Cakemail::List.all
+lists = Cakemail::List.list
 lists.each do |list|
   puts "List ID: #{list.id}"
   puts "List Name: #{list.name}"
@@ -128,7 +128,7 @@ To retrieve all contacts in a given list, you can use the `list` method of the `
 
 ```ruby
 # Get lists
-lists = Cakemail::List.all
+lists = Cakemail::List.list
 
 # Retrieve all contacts in a list
 contacts = Cakemail::Contact.list(parent: lists.first)
