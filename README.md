@@ -192,3 +192,50 @@ contact = list.contacts.last
 contact.unsubscribe
 puts "Contact unsubscribed successfully."
 ```
+
+## Custom attributes
+
+Cakemail allows you to define custom attributes for your contacts. Here's how you can work with custom attributes:
+
+1. Get list of custom attributes from a list object:
+
+```ruby
+attributes = @list.custom_attributes
+
+attributes.each do |attribute|
+  puts "Attribute Name: #{attribute.name}"
+  puts "Attribute Type: #{attribute.type}"
+  # Additional attribute details can be accessed here
+end
+```
+
+2. Create a contact with custom attributes:
+
+```ruby
+attribute = @list.custom_attributes.first
+
+params = {
+  email: "nathan.lopez042@gmail.com",
+  custom_attributes: [
+    {
+      name: attribute.name,
+      value: "Nathan"
+    }
+  ]
+}
+
+contact = @list.create_contact(params)
+
+puts "Contact created successfully."
+puts "Email: #{contact.email}"
+puts "Status: #{contact.status}"
+puts "Custom Attribute: #{contact.custom_attributes.first['name']}: #{contact.custom_attributes.first['value']}"
+```
+
+You can create custom attributes on a list by using the `create` method of the `Cakemail::CustomAttributes` class. To do so, you need to provide the necessary information such as the name and type of the custom attribute. Here's an example code to create a text-type custom attribute with the name "firstname" on a given list:
+
+```ruby
+params = { name: "firstname", type: "text" }
+
+Cakemail::CustomAttributes.create(params, parent: @list)
+```
