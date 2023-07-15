@@ -18,4 +18,5 @@ module Cakemail
   autoload :Sender, "cakemail/sender"
   autoload :List, "cakemail/list"
   autoload :Contact, "cakemail/contact"
+  autoload :CustomAttributes, "cakemail/custom_attribute"
 end

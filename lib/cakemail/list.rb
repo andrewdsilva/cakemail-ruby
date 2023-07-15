@@ -19,6 +19,10 @@ module Cakemail
       Cakemail::Contact.list(options.merge(parent: self))
     end
 
+    def custom_attributes(options = {})
+      Cakemail::CustomAttributes.list(options.merge(parent: self))
+    end
+
     def create_contact(params, options = {})
       Cakemail::Contact.create(params, options.merge(parent: self))
     end

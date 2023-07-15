@@ -1,11 +1,12 @@
 module Cakemail
-  # @attr [String]          email         Email of the contact
-  # @attr [String]          status        Status ex. "active"
-  # @attr [Integer]         subscribed_on Date of subscription (timestamp)
-  # @attr [Integer]         bounces_count Number of bounces
-  # @attr [List]            list          List of the contact
+  # @attr [String]          email             Email of the contact
+  # @attr [String]          status            Status ex. "active"
+  # @attr [Integer]         subscribed_on     Date of subscription (timestamp)
+  # @attr [Integer]         bounces_count     Number of bounces
+  # @attr [List]            list              List of the contact
+  # @attr [Array<Hash>]     custom_attributes List of the custom attributes (name: value)
   class Contact < Base
-    attr_accessor :email, :status, :subscribed_on, :bounces_count
+    attr_accessor :email, :status, :subscribed_on, :bounces_count, :custom_attributes
 
     # Unsubscribe contact
     #
@@ -47,11 +48,12 @@ module Cakemail
     def initialize(options = {})
       super(options)
 
-      @email         = options["email"]
-      @status        = options["status"]
-      @subscribed_on = options["subscribed_on"]
-      @bounces_count = options["bounces_count"]
-      @list          = parent
+      @email             = options["email"]
+      @status            = options["status"]
+      @subscribed_on     = options["subscribed_on"]
+      @bounces_count     = options["bounces_count"]
+      @custom_attributes = options["custom_attributes"]
+      @list              = parent
     end
   end
 end
